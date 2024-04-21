@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-//void printEnv(char* pathEnv);
-void printEnv(char* envp[]);
+void printEnv(char* pathEnv);
 
 /*
 * ѕри запуске дочернего процесса ему передаетс€ сокращенное окружение
@@ -24,8 +23,7 @@ int main(int argc, char* argv[])
 	printf("Path to ChildEnv: %s\n", argv[1]);
 	printf("\n");
 
-//	printEnv(argv[1]);
-	printEnv(&argv[1]);
+	printEnv(argv[1]);
 
 
 	printf("child process OK\n\n");
@@ -33,35 +31,15 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-//void printEnv(char* pathEnv)
-//{
-//	/// TODO
-//}
-
-void printEnv(char* envp[])
+void printEnv(char* pathEnv)
 {
-
-
-	for (int pointer = 0; envp[pointer] != 0; pointer++)
+	FILE* pFile;
+	
+	pFile = fopen(pathEnv, "r");
+	if (pFile == NULL)
 	{
-		printf("%saaaaaaaaaaaaaaaaaaaaaaaaaa\n", envp[pointer]);
+		return;
 	}
+	fclose(pFile);
 }
 
-
-
-
-
-
-//createChild ST
-//createChild OK
-//startChild ST
-//Before exec child process
-//child process ST
-//Child program name : child_00
-//Child program pid : 8226
-//Child program parent pid : 8213
-//Path to ChildEnv : childEnv.txt
-//
-//childEnv.txt//////////////////////////////////////////////////
-//child process OK
