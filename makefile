@@ -1,8 +1,15 @@
+CC = gcc
+CFLAGS = -W -Wall -Wno-unused-parameter -Wno-unused-variable -std=c11 -pedantic
+
 build: parent child
 
 parent: main.cc parent.cc
-	gcc -o parent $^
+	$(CC) $(CFLAGS) -o parent $^
 
 child: child.cc
-	gcc -o child $^
+	$(CC) $(CFLAGS) -o child $^
 	
+.PHONY: clean
+
+clean:
+	rm parent child
