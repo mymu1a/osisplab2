@@ -47,7 +47,7 @@ void printEnv(const char* pathEnv)
     char* env_var_value;
     while (fscanf(pFile, "%127s", env_var_name) != EOF) 
     {
-        printf("in while, env_var_name=%s\n", env_var_name);
+//        printf("in while, env_var_name=%s\n", env_var_name);
         env_var_value = getenv(env_var_name);
         if (env_var_value) 
         {

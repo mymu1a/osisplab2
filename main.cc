@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 extern char** environ;
 
@@ -60,6 +61,15 @@ int main(int argc, char* argv[], char* envp[])
                 return 0;
             }
             break;
+        case 'z':						// kill zombie processes
+        {
+            int stat;
+
+            while (waitpid(-1, &stat, WUNTRACED) > 0)
+            {
+            }
+            break;
+        }
         }
     }
     printf("main OK\n");
